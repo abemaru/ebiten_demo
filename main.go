@@ -2,29 +2,20 @@ package main
 
 import (
 	"log"
-	"github.com/hajimehoshi/ebiten"
-	"github.com/hajimehoshi/ebiten/ebitenutil"
+
+	"github.com/abemaru/ebiten_demo/snake"
+	"github.com/hajimehoshi/ebiten/v2"
 )
 
-type Game struct {}
-
-func (g *Game) Update(screen *ebiten.Image) error {
-	return nil
-}
-
-func (g *Game) Draw(screen *ebiten.Image){
-	ebitenutil.DebugPrint(screen, "Hello, world!")
-}
-
-func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
-	return 320, 240
-}
 
 func main() {
-	ebiten.SetWindowSize(640, 480)
-	ebiten.SetWindowTitle("Hello, World!")
-	if err := ebiten.RunGame(&Game{}); err != nil {
+	game := snake.NewGame()
+
+	ebiten.SetWindowSize(600, 600)
+	ebiten.SetWindowTitle("Snake demo")
+	if err := ebiten.RunGame(game); err != nil {
 		log.Fatal(err)
 	}
 }
+
 
